@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Fruits & Veggies Market</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .products {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .price {
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .cart {
+      background: #fff;
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .cart h2 {
+      margin-top: 0;
+    }
+
+    .cart ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cart ul li {
+      padding: 5px 0;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    🛒 Online Fruits & Veggies Market
+  </header>
+
+  <section class="products">
+    <div class="card">
+      <img src="https://via.placeholder.com/100?text=Apple" alt="Apples">
+      <h3>Fresh Apples</h3>
+      <p class="price">₹100 / kg</p>
+      <button onclick="addToCart('Fresh Apples', 100)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/100?text=Tomato" alt="Tomatoes">
+      <h3>Tomatoes</h3>
+      <p class="price">₹40 / kg</p>
+      <button onclick="addToCart('Tomatoes', 40)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/100?text=Potato" alt="Potatoes">
+      <h3>Potatoes</h3>
+      <p class="price">₹30 / kg</p>
+      <button onclick="addToCart('Potatoes', 30)">Add to Cart</button>
+    </div>
+  </section>
+
+  <section class="cart">
+    <h2>🧺 Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p class="total" id="total">Total: ₹0</p>
+  </section>
+
+  <script>
+    let cart = [];
+    let total = 0;
+
+    function addToCart(item, price) {
+      cart.push({ item, price });
+      total += price;
+
+      const cartList = document.getElementById("cart-items");
+      const listItem = document.createElement("li");
+      listItem.textContent = `${item} – ₹${price}`;
+      cartList.appendChild(listItem);
+
+      document.getElementById("total").textContent = `Total: ₹${total}`;
+    }
+  </script>
+
+</body>
+</html>
